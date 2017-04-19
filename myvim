@@ -117,7 +117,12 @@ if [ ! -d $BASE/.vim ]; then
    rm -f '"$VIMRC"'.org)
 fi
 
-\vim -Nu $BASE/'"$VIMRC"' "$@"
+if [[ -f /usr/bin/vimx ]]; then
+    \vimx -Nu $BASE/'"$VIMRC"' "$@"
+else
+    \vim -Nu $BASE/'"$VIMRC"' "$@"
+fi
+
 exit $?
 # EOF #' > "$OUTPUT"
   cat "$TEMP" >> "$OUTPUT"
